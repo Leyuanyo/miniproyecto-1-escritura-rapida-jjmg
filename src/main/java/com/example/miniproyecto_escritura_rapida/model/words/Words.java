@@ -2,11 +2,37 @@ package com.example.miniproyecto_escritura_rapida.model.words;
 
 import java.util.Random;
 
+/**
+ * Implementation of the {@link IWords} interface.
+ * Manages the word bank for the Escritura Rapida typing game.
+ * Contains a collection of 500 words related to Dark Souls lore,
+ * Java programming, JavaFX, and general programming concepts.
+ * Provides methods to randomly generate words and validate player input.
+ *
+ * @author Juan José Morera Gómez
+ * @version 1.0
+ * @since 1.0
+ * @see IWords
+ */
 public class Words implements IWords {
+
+    /** Random instance used to select words from the word bank. */
     private Random random;
+
+    /** Array containing all available words for the game. */
     private String [] words;
+
+    /** The word currently displayed to the player. */
     private String currentWord;
 
+    /**
+     * Constructs a new Words instance.
+     * Initializes the random number generator and populates the word bank
+     * with 500 words from Dark Souls lore, Java, JavaFX, and general
+     * programming concepts.
+     *
+     * @since 1.0
+     */
     public Words(){
         random = new Random();
         words = new String[]{
@@ -86,14 +112,33 @@ public class Words implements IWords {
                 "carga", "cache", "latencia", "ancho", "banda", "paquete", "enrutamiento"        };
     }
 
+    /**
+     * Returns the full word bank array.
+     *
+     * @return an array of {@code String} containing all available words
+     * @since 1.0
+     */
     public String[] getWords() {
         return words;
     }
 
+    /**
+     * Replaces the current word bank with a new array of words.
+     *
+     * @param words the new array of words to use as the word bank
+     * @since 1.0
+     */
     public void setWords(String[] words) {
         this.words = words;
     }
 
+    /**
+     * Generates and returns a random word from the word bank.
+     * The selected word is stored as the current word for subsequent validation.
+     *
+     * @return a randomly selected word as a {@code String}
+     * @since 1.0
+     */
     @Override
     public String generateWord() {
         int randomNumber = random.nextInt(words.length);
@@ -101,6 +146,14 @@ public class Words implements IWords {
         return currentWord;
     }
 
+    /**
+     * Validates the player's input against the current word.
+     *
+     * @param userWord the word typed by the player
+     * @return {@code true} if the player's input matches the current word,
+     *         {@code false} otherwise
+     * @since 1.0
+     */
     @Override
     public Boolean validateWord(String userWord) {
         return currentWord.equals(userWord);

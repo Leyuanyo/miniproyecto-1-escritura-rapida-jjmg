@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"com.example.miniproyecto_escritura_rapida"}];updateSearchResults();

@@ -10,26 +10,57 @@ import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 import com.example.miniproyecto_escritura_rapida.view.GameStage;
 
+/**
+ * Controller for the Win screen.
+ * Manages the animated sequence showing the victory image,
+ * displays a congratulations message, and provides options
+ * to play again or return to the main menu.
+ *
+ * @author Juan José Morera Gómez
+ * @version 1.0
+ * @since 1.0
+ * @see GameStage
+ * @see GameController
+ */
 public class WinController {
+
+    /** Sound played when the win screen is shown. */
     private AudioClip WinSound;
+
+    /** Sound played when a navigation button is clicked. */
     private AudioClip buttonSound;
 
-
+    /** Button that navigates back to the main menu. */
     @FXML
     private Button menuButton;
 
+    /** Button that starts a new game. */
     @FXML
     private Button playAgainButton;
 
+    /** ImageView displaying the victory image. */
     @FXML
     private ImageView youWonImageView;
 
+    /** Label displaying the congratulations message. */
     @FXML
     private Label congratsLabel;
 
+    /** Label displaying the "You Won" message. */
     @FXML
     private Label youWonLabel;
 
+    /**
+     * Initializes the Win screen controller.
+     * Loads audio resources, sets all UI elements to invisible,
+     * plays the win sound, and starts an animated sequence:
+     * the victory image fades in, pauses, fades out, then the
+     * congratulations message and buttons fade in.
+     *
+     * @since 1.0
+     * @see GameController#validateAndSave()
+     * @see GameController#onTimeUp()
+     */
     @FXML
     public void initialize() {
         buttonSound = new AudioClip(
@@ -93,12 +124,30 @@ public class WinController {
         fadeIn.play();
     }
 
+    /**
+     * Initializes the Win screen controller.
+     * Loads audio resources, sets all UI elements to invisible,
+     * plays the win sound, and starts an animated sequence:
+     * the victory image fades in, pauses, fades out, then the
+     * congratulations message and buttons fade in.
+     *
+     * @since 1.0
+     * @see GameController#validateAndSave()
+     * @see GameController#onTimeUp()
+     */
     @FXML
     private void handlePlayAgain() {
         buttonSound.play();
         GameStage.loadScene("game-view.fxml");
     }
 
+    /**
+     * Handles the Main Menu button click event.
+     * Plays the button sound and navigates back to the main menu scene.
+     *
+     * @since 1.0
+     * @see GameStage#loadScene(String)
+     */
     @FXML
     private void handleMenu() {
         buttonSound.play();
